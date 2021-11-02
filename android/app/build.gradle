@@ -1,5 +1,6 @@
 apply plugin: "com.android.application"
-
+// firebase sdk 추가
+apply plugin: 'com.google.gms.google-services'
 import com.android.build.OutputFile
 
 /**
@@ -182,6 +183,9 @@ android {
 }
 
 dependencies {
+     // Import the Firebase BoM 추가
+    implementation platform('com.google.firebase:firebase-bom:29.0.0')
+
     implementation fileTree(dir: "libs", include: ["*.jar"])
     //noinspection GradleDynamicVersion
     implementation "com.facebook.react:react-native:+"  // From node_modules
