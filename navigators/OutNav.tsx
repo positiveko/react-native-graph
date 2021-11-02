@@ -4,7 +4,12 @@ import Join from '../screens/Join';
 import Login from '../screens/Login';
 import { BLACK_COLOR } from '../colors';
 
-const Nav = createNativeStackNavigator();
+export type OutNavParamsList = {
+  Login: undefined; // undefined because you aren't passing any params to the home screen
+  Join: undefined;
+};
+
+const Nav = createNativeStackNavigator<OutNavParamsList>();
 
 const OutNav = () => (
   <Nav.Navigator

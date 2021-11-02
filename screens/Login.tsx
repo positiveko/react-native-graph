@@ -1,8 +1,19 @@
+import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 import React from 'react';
 import styled from 'styled-components/native';
 import { BLACK_COLOR } from '../colors';
+import { OutNavParamsList } from '../navigators/OutNav';
 
-const Login = ({ navigation: { navigate } }) => (
+type LoginScreenNavigationProp = NativeStackNavigationProp<
+  OutNavParamsList,
+  'Login'
+>;
+
+type LoginProps = {
+  navigation: LoginScreenNavigationProp;
+};
+
+const Login = ({ navigation: { navigate } }: LoginProps) => (
   <Container>
     <Wrapper>
       <Text>Don't have an account? </Text>

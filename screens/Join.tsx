@@ -1,19 +1,20 @@
 import React, { useRef, useState } from 'react';
+import { TextInput } from 'react-native';
 import styled from 'styled-components/native';
 import { BLACK_COLOR } from '../colors';
 
 const Join = () => {
-  const passwordInput = useRef();
+  const passwordInput = useRef<TextInput>(null);
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
   const onSubmitEditing = () => {
-    passwordInput.current.focus();
+    passwordInput.current?.focus();
   };
 
   return (
     <Container>
-      <TextInput
+      <StyledTextInput
         placeholder='Email'
         autoCapitalize='none'
         autoCorrect={false}
@@ -24,7 +25,7 @@ const Join = () => {
         onSubmitEditing={onSubmitEditing}
         placeholderTextColor={'rgba(255, 255, 255, 0.7)'}
       />
-      <TextInput
+      <StyledTextInput
         ref={passwordInput}
         placeholder='Password'
         secureTextEntry
@@ -50,7 +51,7 @@ const Container = styled.View`
   padding: 60px 20px;
 `;
 
-const TextInput = styled.TextInput`
+const StyledTextInput = styled.TextInput`
   width: 100%;
   padding: 10px 20px;
   border-radius: 20px;
