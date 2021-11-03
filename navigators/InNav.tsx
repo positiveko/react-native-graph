@@ -12,10 +12,11 @@ type RootStackParamList = {
   Detail: {
     symbol: string;
     id: string;
+    name: string;
   };
 };
 
-export type StackScreenProp = NativeStackNavigationProp<RootStackParamList>;
+export type InNavScreenProp = NativeStackNavigationProp<RootStackParamList>;
 
 const Nav = createNativeStackNavigator<RootStackParamList>();
 

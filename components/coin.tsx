@@ -2,16 +2,17 @@ import { useNavigation } from '@react-navigation/native';
 import React, { useEffect, useRef } from 'react';
 import { Animated, View, TouchableOpacity } from 'react-native';
 import styled from 'styled-components/native';
-import { StackScreenProp } from '../navigators/InNav';
+import { InNavScreenProp } from '../navigators/InNav';
 
 interface CoinProps {
   symbol: string;
   index: number;
   id: string;
+  name: string;
 }
 
-const Coin = ({ symbol, index, id }: CoinProps) => {
-  const navigation = useNavigation<StackScreenProp>();
+const Coin = ({ symbol, index, id, name }: CoinProps) => {
+  const navigation = useNavigation<InNavScreenProp>();
   const opacity = useRef(new Animated.Value(0)).current;
 
   useEffect(() => {
@@ -30,7 +31,7 @@ const Coin = ({ symbol, index, id }: CoinProps) => {
   return (
     <TouchableOpacity
       style={{ flex: 0.31 }}
-      onPress={() => navigation.navigate('Detail', { symbol, id })}>
+      onPress={() => navigation.navigate('Detail', { symbol, id, name })}>
       <Wrapper style={{ opacity, transform: [{ scale }] }}>
         <Icon
           source={{

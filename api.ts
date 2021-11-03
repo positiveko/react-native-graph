@@ -1,3 +1,5 @@
+import { CoinInfo } from './types';
+
 const BASE_URL = 'https://api.coinpaprika.com/v1';
 const COINS_URL = `${BASE_URL}/coins`;
 
@@ -7,7 +9,7 @@ interface UseQueryParams {
 
 export const coins = () => fetch(COINS_URL).then((response) => response.json());
 
-export const info = ({ queryKey }: UseQueryParams) =>
+export const info = ({ queryKey }: UseQueryParams): Promise<CoinInfo> =>
   fetch(`${COINS_URL}/${queryKey[1]}`).then((response) => response.json());
 
 export const history = ({ queryKey }: UseQueryParams) =>
