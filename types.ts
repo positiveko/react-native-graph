@@ -1,4 +1,4 @@
-export interface coin {
+export interface CoinItem {
   id: string;
   is_active: boolean;
   is_new: boolean;
