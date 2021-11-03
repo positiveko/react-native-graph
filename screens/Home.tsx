@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { ActivityIndicator, View } from 'react-native';
+import { ActivityIndicator, FlatList, View } from 'react-native';
 import { useQuery } from 'react-query';
 import styled from 'styled-components/native';
 import Coin from '../components/Coin';
@@ -38,9 +38,9 @@ const Home = () => {
         columnWrapperStyle={{
           justifyContent: 'space-between',
         }}
-        keyExtractor={(item) => (item as CoinItem).id}
+        keyExtractor={(item) => item.id}
         renderItem={({ item, index }) => (
-          <Coin index={index} symbol={(item as CoinItem).symbol} />
+          <Coin index={index} id={item.id} symbol={item.symbol} />
         )}
       />
     </Container>
@@ -61,7 +61,7 @@ const Loader = styled.View`
   align-items: center;
 `;
 
-const List = styled.FlatList`
+const List = styled(FlatList as new () => FlatList<CoinItem>)`
   padding: 20px 10px;
   width: 100%;
 `;
