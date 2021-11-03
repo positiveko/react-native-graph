@@ -3,9 +3,12 @@ import auth from '@react-native-firebase/auth';
 import { NavigationContainer } from '@react-navigation/native';
 import InNav from './navigators/InNav';
 import OutNav from './navigators/OutNav';
+import { QueryClient, QueryClientProvider } from 'react-query';
 
 export default function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
+
+  const queryClient = new QueryClient();
 
   useEffect(() => {
     auth().onAuthStateChanged((user) => {
@@ -16,10 +19,12 @@ export default function App() {
       }
     });
   }, []);
-  
+
   return (
-    <NavigationContainer>
-      {isLoggedIn ? <InNav /> : <OutNav />}
-    </NavigationContainer>
+    <QueryClientProvider client={queryClient}>
+      <NavigationContainer>
+        {isLoggedIn ? <InNav /> : <OutNav />}
+      </NavigationContainer>
+    </QueryClientProvider>
   );
 }
